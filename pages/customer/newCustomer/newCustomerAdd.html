@@ -1,0 +1,103 @@
+<div class="content">
+    <ul class="breadcrumb">
+        <li>
+            <p>新增客户管理</p>
+        </li>
+        <li><a href="#" class="active">添加新增客户</a> </li>
+    </ul>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="grid simple">
+                <div class="grid-title no-border">
+                    <h4>添加新增客户</h4>
+                    <div class="tools"> <a href="javascript:;" class="collapse"></a></div>
+                </div>
+                <div class="grid-body no-border">
+                    <form class="form-no-horizontal-spacing" id="form-condensed" novalidate="novalidate">
+                        <div class="row column-seperation">
+                            <div class="col-md-6">
+                                <h4>基本信息</h4>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="form-group">
+                                        <label class="form-label">客户名称</label>
+                                        <div class="controls">
+                                            <input ng-model="name" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">手机号</label>
+                                        <div class="controls">
+                                            <input ng-model="phone" type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">区域</label>
+                                        <div class="controls">
+                                            <select ng-model="city"  class="form-control" ng-change="cityChange()">
+                                                <option  value="">无</option>
+                                                <option ng-repeat="el in cityList" value="{{el.code}}">{{el.name}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="controls" style="margin-top: 20px;">
+                                            <select ng-model="county"  class="form-control">
+                                                <option  value="">无</option>
+                                                <option ng-repeat="el in countyList" value="{{el.code}}">{{el.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">备注</label>
+                                        <div class="controls">
+                                            <textarea ng-model="remark" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>业务信息</h4>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="form-group">
+                                    <label class="form-label">购买意愿</label>
+                                    <div class="controls">
+                                        <select ng-model="wishLevel"  class="form-control">
+                                            <option value="0">无</option>
+                                            <option value="1">无意愿</option>
+                                            <option value="2">一般意愿</option>
+                                            <option value="3">较有意愿</option>
+                                            <option value="4">很有意愿</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">意向业务</label>
+                                    <div class="controls">
+                                        <select ng-model="wishServiceId"  class="form-control">
+                                            <option  value="">无</option>
+                                            <option ng-repeat="tc in tcList" value="{{tc.id}}">{{tc.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">客服人员</label>
+                                    <div class="controls">
+                                        <select  ng-model="sysUserId"  class="form-control">
+                                            <option  value="">无</option>
+                                            <option ng-repeat="kf in kfList" value="{{kf.id}}">{{kf.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="pull-right">
+                                <button class="btn btn-danger btn-cons" type="submit" ng-click="save()"><i class="icon-ok"></i> 提交</button>
+                                <button class="btn btn-white btn-cons" type="button" ng-click="qx()">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

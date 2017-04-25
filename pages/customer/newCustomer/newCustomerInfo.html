@@ -1,0 +1,211 @@
+<div class="content">
+    <ul class="breadcrumb">
+        <li>
+            <p>新增客户管理</p>
+        </li>
+        <li><a href="#" class="active">新增客户详情</a> </li>
+    </ul>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="dataTables_filter clearFix" id="example_filter">
+                    <button class="btn btn-info btn-cons fr" ng-click="qyBtn(true)">签约</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="grid simple">
+                <div class="grid-title no-border">
+                    <h4>基本信息</h4>
+               </div>
+                <div class="grid-body no-border">
+                    <form id="form_iconic_validation" action="#" novalidate="novalidate">
+                        <div class="form-group">
+                            <label class="form-label">客户名称</label>
+                            <div class="input-with-icon  right">
+                                <i class=""></i>
+                                <input ng-model="data.name" type="text" name="form1Name" id="form1Name" class="form-control disabledJb" disabled="disabled">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">手机号</label>
+                            <div class="input-with-icon  right">
+                                <i class=""></i>
+                                <input ng-model="data.phone" type="text" name="form1Name" id="form2Name" class="form-control" disabled="disabled">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">区域</label>
+                            <div class="controls">
+                                <select ng-model="data.cityId"  class="form-control disabledJb" ng-change="cityChange()" disabled="disabled">
+                                    <option  value="">无</option>
+                                    <option ng-repeat="el in cityList" value="{{el.code}}">{{el.name}}</option>
+                                </select>
+                            </div>
+                            <div class="controls" style="margin-top: 20px;">
+                                <select ng-model="data.countyId"  class="form-control disabledJb" disabled="disabled">
+                                    <option  value="">无</option>
+                                    <option ng-repeat="el in countyList" value="{{el.code}}">{{el.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">创建时间</label>
+                            <div class="input-with-icon  right">
+                                <i class=""></i>
+                                <input ng-model="data.createTime | ydate" type="text" name="form1Name" id="form3Name" class="form-control" disabled="disabled">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">备注</label>
+                            <div class="input-with-icon  right">
+                                <i class=""></i>
+                                <textarea ng-model="data.remark" class="form-control disabledJb" disabled="disabled"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="pull-right">
+                                <button ng-if="ifJb" type="submit" class="btn btn-success btn-cons" ng-click="jbBtn(false)"><i class="icon-ok"></i>编辑</button>
+                                <button ng-if="!ifJb" type="submit" class="btn btn-danger btn-cons" ng-click="jbBtn(true,false)"><i class="icon-ok"></i>取消</button>
+                                <button ng-if="!ifJb" type="submit" class="btn btn-danger btn-cons" ng-click="jbBtn(true,true)"><i class="icon-ok"></i>保存</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="grid simple">
+                <div class="grid-title no-border">
+                    <h4>业务信息</h4>
+               </div>
+                <div class="grid-body no-border">
+                        <div class="form-group">
+                            <label class="form-label">购买意向</label>
+                            <div class="input-with-icon  right">
+                                <i class=""></i>
+                                <select ng-model="data.wishLevel"  class="form-control disabledYw" disabled="disabled">
+                                    <option value="0">无</option>
+                                    <option value="1">无意愿</option>
+                                    <option value="2">一般意愿</option>
+                                    <option value="3">较有意愿</option>
+                                    <option value="4">很有意愿</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">意向业务</label>
+                            <div class="input-with-icon  right">
+                                <i class=""></i>
+                                <select ng-model="data.wishServiceId"  class="form-control disabledYw" disabled="disabled">
+                                    <option  value="">无</option>
+                                    <option ng-repeat="tcs in tcLists" value="{{tcs.id}}">{{tcs.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">客服人员</label>
+                            <div class="input-with-icon  right">
+                                <i class=""></i>
+                                <select ng-model="data.sysUserId"  class="form-control disabledYw" disabled="disabled">
+                                    <option  value="">无</option>
+                                    <option ng-repeat="kf in kfList" value="{{kf.id}}">{{kf.name}}</option>
+                                </select>
+                             </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <div class="pull-right">
+                                <button ng-if="ifYw" type="submit" class="btn btn-success btn-cons" ng-click="ywBtn(false)"><i class="icon-ok"></i>编辑</button>
+                                <button ng-if="!ifYw" type="submit" class="btn btn-danger btn-cons" ng-click="ywBtn(true,false)"><i class="icon-ok"></i>取消</button>
+                                <button ng-if="!ifYw" type="submit" class="btn btn-danger btn-cons" ng-click="ywBtn(true,true)"><i class="icon-ok"></i>保存</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="grid simple">
+                <div class="grid-title no-border">
+                    <h4>跟进记录</h4>
+                </div>
+                <div class="grid-body no-border">
+                        <div class="form-group">
+                            <div class="input-with-icon  right">
+                                <i class=""></i>
+                                <textarea ng-model="data.fellowInfo" style="height: 200px;" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="pull-right">
+                                <button type="submit" class="btn btn-danger btn-cons" ng-click="jlBtn()"><i class="icon-ok"></i> 提交</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="grid simple">
+                <div class="grid-title no-border">
+                    <h4>操作记录</h4>
+                </div>
+                <div class="grid-body no-border" style="height: 305px;overflow: auto;">
+                    <div class="form-group" ng-repeat="el in data.logs">
+                        <div class="clearFix">
+                            <p class="fl">{{el.createTime | ydate}}</p>
+                            <p class="fr">来自：{{el.userName}}</p>
+                        </div>
+                        <div>
+                            <p  ng-bind-html="el.remark | trustHtml"></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+    <div class="alert alert-block alert-error qx-mask" ng-if="none">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="grid simple">
+                    <div class="grid-title no-border">
+                        <h4>客户签约</h4>
+                    </div>
+                    <div class="grid-body no-border">
+                        <div class="form-group">
+                            <label class="form-label">签约业务</label>
+                            <div class="input-with-icon  right qy-div">
+                                <div  ng-repeat="tc in tcList" class="row">
+                                    <div class="col-lg-6">
+                                        <select ng-model="tc.value"  class="form-control">
+                                            <option ng-repeat="el in tcLists" value="{{el.id}}">{{el.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <select ng-model="tc.data"  class="form-control">
+                                            <option ng-repeat="el in zsList" value="{{el.id}}">{{el.name}}</option>
+                                        </select>
+                                    </div>
+                                    <i ng-click="deleteTc($index)" class="fa fa-times"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="pull-left">
+                               <button type="submit" class="btn btn-primary btn-cons" ng-click="addYw()"><i class="icon-ok"></i> 添加业务</button>
+                            </div>
+                            <div class="pull-right">
+                                <button type="submit" class="btn btn-white btn-cons" ng-click="qyBtn(false)"><i class="icon-ok"></i> 取消</button>
+                                <button type="submit" class="btn btn-danger btn-cons" ng-click="qytjBtn(false)" ><i class="icon-ok"></i> 提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

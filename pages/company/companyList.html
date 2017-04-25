@@ -1,0 +1,88 @@
+<div class="content">
+    <ul class="breadcrumb">
+        <li>
+            <p>公司管理</p>
+        </li>
+        <li><a href="#" class="active">公司列表</a> </li>
+    </ul>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="dataTables_filter clearFix">
+                <a class="btn btn-info btn-cons fr" href="#/companyAdd">添加公司</a>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="grid simple ">
+                <div class="grid-title">
+                    <h4> <span class="semi-bold">公司列表</span></h4>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"></a>
+                    </div>
+                </div>
+                <div class="grid-body ">
+                    <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="dataTables_filter" id="example_filter">
+                                    <label>
+                                        搜索:
+                                        <select ng-model="paramsType" class="input-medium">
+                                            <option value=" ">—————请选择—————</option>
+                                            <option value="1">客户姓名</option>
+                                            <option value="2">公司名称</option>
+                                        </select>
+                                        <input type="text" class="input-medium" ng-model="value">
+                                        <button class="btn btn-info btn-cons" ng-click="search()">确定</button>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <table class="companyTable table table-striped table-flip-scroll cf" id="example" aria-describedby="example_info">
+                            <thead class="cf">
+                            <tr>
+                                <th>公司名称</th>
+                                <th >客户</th>
+                                <th >社会信用代码</th>
+                                <th >所属行业</th>
+                                <th ng-click="sortingPx('taxType')" id="taxType" class="sorting_px">纳税人类型</th>
+                                <th ng-click="sortingPx('createTime')" id="createTime" class="sorting_px">创建时间</th>
+                                <th >操作</th>
+                            </tr>
+                            </thead>
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+                            <tr ng-repeat="el in list" class="tc">
+                                 <td>{{el.name}}</td>
+                                 <td>{{el.userName}}</td>
+                                 <td>{{el.code}}</td>
+                                 <td>
+                                     {{el.tradeName}}
+                                 </td>
+                                 <td>
+                                     <span ng-if="el.taxType == 1">小规模纳税人</span>
+                                     <span ng-if="el.taxType == 2">一般纳税人</span>
+                                 </td>
+                                 <td>
+                                     {{el.createTime | ydate}}
+                                 </td>
+                                 <td class="delete tc">
+                                     <a style="color: #ffffff" class="label label-important" ng-href="#/companyInfo?id={{el.id}}">详情</a>
+                                     <span class="label label-important" ng-click="remove(el.id,$index)">删除</span>
+                                 </td>
+                             </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-md-12 tc">
+                                <ul class="pagination" id="pagination"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

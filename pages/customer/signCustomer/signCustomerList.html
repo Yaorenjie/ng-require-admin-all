@@ -1,0 +1,74 @@
+<div class="content">
+    <ul class="breadcrumb">
+        <li>
+            <p>客户管理</p>
+        </li>
+        <li><a href="#" class="active">签约客户</a> </li>
+    </ul>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="grid simple ">
+                <div class="grid-title">
+                    <h4> <span class="semi-bold">签约客户</span></h4>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"></a>
+                    </div>
+                </div>
+                <div class="grid-body ">
+                    <div id="example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="dataTables_filter" id="example_filter">
+                                    <label>
+                                        搜索:
+                                        <select ng-model="paramsType" class="input-medium">
+                                            <option value="">—————请选择—————</option>
+                                            <option value="1">客户姓名</option>
+                                            <option value="2">客服人员</option>
+                                        </select>
+                                        <input type="text" class="input-medium" ng-model="value">
+                                        <button class="btn btn-info btn-cons" ng-click="search()">确定</button>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <table class="companyTable table table-striped table-flip-scroll cf" id="example" aria-describedby="example_info">
+                            <thead class="cf">
+                            <tr>
+                                <th>客户</th>
+                                <th >手机号</th>
+                                <th >签约业务</th>
+                                <th >客服人员</th>
+                                <th ng-click="sortingPx('updateTime')" id="updateTime" class="sorting_px">最近签约</th>
+                                <th >操作</th>
+                            </tr>
+                            </thead>
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+                            <tr ng-repeat="el in list" class="tc">
+                                 <td>{{el.name}}</td>
+                                 <td>{{el.phone}}</td>
+                                 <td>{{el.signInfo}}</td>
+                                 <td>
+                                    {{el.sysUserName}}
+                                 </td>
+                                 <td>{{el.updateTime | ydate}}</td>
+                                 <td class="delete tc">
+                                     <a style="color: #ffffff" class="label label-important" ng-href="#/signCustomerInfo?id={{el.id}}">详情</a>
+                                     <span class="label label-important" ng-click="remove(el.id,$index)">删除</span>
+                                 </td>
+                             </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-md-12 tc">
+                                <ul class="pagination" id="pagination"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
